@@ -113,9 +113,10 @@ def live(model, camera):
     prediction_value = CATEGORIES[category_index]
     # print("detected:", prediction_value, ", output:", [(CATEGORIES[i], prediction) for i, prediction in enumerate(output)])
     print(output)
-    if output[category_index] > 0.59:
+    print("Detected ", prediction_value)
+    if output[category_index] > 0.60:
         print(f"Executing command {prediction_value}...")
-        time.sleep(5)
+        time.sleep(2)
         if prediction_value == "open":
             open()
         elif prediction_value == "close":
@@ -141,8 +142,8 @@ fake_camera = FakeCamera()
 # DATA_DIR = "nvdli-data/classification/tabs_B/"
 DATA_DIR = "images/"
 
-images = ["open-1.jpg", "close-1.jpg", "left-2.jpg", "right-2.jpg"]
-# images = ["right-3.jpg"]
+images = ["open-1.jpg", "close-1.jpg", "left-2.jpg", "right-1.jpg"]
+#images = ["right-1.jpg"]
 # for category in CATEGORIES:
 #     files = [DATA_DIR + category + "/" + i for i in os.listdir(DATA_DIR + category) if i.endswith(".jpg")]
 #     random.shuffle(files)
